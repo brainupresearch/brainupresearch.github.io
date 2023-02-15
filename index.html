@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--    <script src="css/index.css"></script>-->
+<!--    <link rel="stylesheet" href="css/index.css" />-->
+    <style>
+        .container {
+            width: 100%;
+            height: 500px;
+        }
+
+
+        .Nav-div {
+            width: 100%;
+            height: 500px;
+        }
+
+
+        /* 去掉二级菜单之间的 margin 和 padding */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* 一级菜单左浮动 */
+        .Nav-div > ul >li {
+            float: left;
+        }
+
+
+        /* 所有 li 圆点的符号; 并设置宽高、居中、背景色 */
+        li {
+            list-style-type: none;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background: lightblue;
+        }
+
+        /* 隐藏二级菜单 ul */
+        .Nav-div ul ul {
+            display: none;
+        }
+
+        /* a 标签取消下划线 */
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        li:hover {
+            background: whitesmoke;
+        }
+
+        .Nav-div > ul > li > ul > li:hover {
+            background: antiquewhite;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+    <!-- 使用 javascript 实现鼠标滑动显示二级菜单 -->
+
+    <script type="text/javascript">
+        $(function (){
+            $("div > ul > li").hover(function (){
+                $(this).children().stop().slideToggle();
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="Nav-div">
+            <!-- 导航 -->
+            <ul>
+                <li>Product Introduction
+<!--                    <ul>-->
+<!--                        <li><a href="">下拉菜单1</a></li>-->
+<!--                        <li><a href="">下拉菜单2</a></li>-->
+<!--                        <li><a href="">下拉菜单3</a></li>-->
+<!--                    </ul>-->
+                </li>
+
+                <li>Product Feature
+<!--                    <ul>-->
+<!--                        <li><a href="">下拉菜单1</a></li>-->
+<!--                        <li><a href="">下拉菜单2</a></li>-->
+<!--                        <li><a href="">下拉菜单3</a></li>-->
+<!--                    </ul>-->
+                </li>
+
+                <li>Applications
+                    <ul>
+                        <li><a href="">BrainTouch Lab</a></li>
+                        <li><a href=""> BrainTouch SDK</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+<!--    Product Introduction-->
+<!--    Product Feature-->
+<!--    Applications-->
+<!--        BrainTouch Lab-->
+<!--        BrainTouch SDK-->
+</body>
+</html>
