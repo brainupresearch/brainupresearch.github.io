@@ -68,6 +68,7 @@ h2 {
 
 img {
     width: 800px;
+    max-width: 960px;
 }
 
 
