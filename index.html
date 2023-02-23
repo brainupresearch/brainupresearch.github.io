@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>BrainTouch SDK</title>
+    <link rel="stylesheet" href="./css/brainTouch_SDK.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/brainTouch_SDK.js"></script>
+</head>
+<body>
+    <div id="container">
+        <!-- 左侧导航（后期实现） -->
+        <div id="leftSide">
+            <ul class="ul-none">
+               <li><a href="#title-1">一、硬件介绍</a></li>
+
+                <li>
+                    <a href="#title-2">二、开发和打包运行环境支持</a>
+                    <ul class="ul-none">
+                        <li><a href="#title-2.1">2.1) SDK 支持的打包目标环境</a></li>
+                        <li><a href="#title-2.2">2.2) 开发环境</a></li>
+                        <li><a href="#title-2.3">2.3) 外部环境</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#title-3">三、快速体验</a>
+                    <ul class="ul-none">
+                        <li><a href="#title-3.1">3.1) SDK 的下载和导入</a></li>
+                        <li><a href="#title-3.2">3.2) 配置打开 Basic 场景</a></li>
+                        <li>
+                            <a href="#title-3.3">3.3) 佩戴设备</a>
+                            <ul class="ul-none">
+                                <li><a href="#title-3.3.a">a) 设备开机</a></li>
+                                <li><a href="#title-3.3.b">b) 佩戴设备</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#title-3.4">3.4) 连接设备</a></li>
+                        <li><a href="#title-3.5">3.5) 佩戴检测</a></li>
+                        <li><a href="#title-3.6">3.6) 校准</a></li>
+                        <li><a href="#title-3.7">3.7) 体验项目</a></li>
+                        <li><a href="#title-3.8">3.8) 其它 demo</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#title-4">四、5分钟入门</a>
+                    <ul class="ul-none">
+
+                        <li>
+                            <a href="#title-4.1">4.1) SDK 下载和导入</a>
+                            <ul class="ul-none">
+                                <li><a href="#title-4.1.a"> a) 新项目导入 SDK</a></li>
+                                <li><a href="#title-4.1.b"> b) 佩戴设备</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#title-4.2">4.2) SDK 使用方法</a>
+                            <ul class="ul-none">
+                                <li><a href="#title-4.2.1">4.2.1) 初始化 NeuroManager</a></li>
+                                <li><a href="#title-4.2.2">4.2.2) 发现/扫描设备</a></li>
+                                <li><a href="#title-4.2.3">4.2.3) 连接设备</a></li>
+                                <li><a href="#title-4.2.4">4.2.4) 断开连接</a></li>
+                                <li><a href="#title-4.2.5">4.2.5) 穿戴检测</a></li>
+                                <li><a href="#title-4.2.6">4.2.6) 配置校准场景中的频闪目标</a></li>
+                                <li><a href="#title-4.2.7">4.2.7) 校准</a></li>
+                                <li><a href="#title-4.2.8">4.2.8) 配置应用场景中的频闪目标</a></li>
+                                <li><a href="#title-4.2.9">4.2.9) 运行</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#title-5">五、历史版本</a></li>
+                <li><a></a></li>
+                <li><a href="#title-6">合作方式</a></li>
+            </ul>
+        </div>
+
+
+
+        <!-- 右侧正文 -->
+        <div id="rightSide">
+            <h1>BrainTouch SDK 使用说明书</h1><br>
+            <h2 id="title-1" onclick="bindFoldOrExpendEvent(this)">一、硬件介绍</h2>
+
+            <span>
+                <img src="img/hd1.png" style="width: 98%">
+                <img src="img/hd2.png" style="width: 98%">
+
+                <img src="img/hd3.png" style="width: 98%">
+                <img src="img/hd4.png" style="width: 98%">
+
+                <img src="img/hd5.png" style="width: 98%">
+                <img src="img/hd6.png" style="width: 98%">
+            </span>
+
+
+
+            <br><br>
+            <h2 id="title-2" onclick="bindFoldOrExpendEvent(this)">二、开发和打包运行环境支持</h2>
+            <span>
+                <h4 id="title-2.1">2.1) SDK 支持的打包目标环境</h4>
+
+                <ul class="ul-circle">
+                    <li>Windows Standedalone (Win10、Win11 环境下可执行的 exe)</li>
+                    <li>Android (armV7 平台 Android8 以及以上版本，armV8 暂未单独测试)</li>
+                </ul>
+
+                <h4 id="title-2.2">2.2) 开发环境</h4>
+                <ul class="ul-circle">
+                    <li>开发环境支持 Untiy2019LTS 以及以上版本</li>
+                    <li>代码编辑器开发者可以根据需要自选</li>
+                </ul>
+
+                <h4 id="title-2.3">2.3) 外部依赖</h4>
+                <p>自带的 demo 中依赖如下两个插件</p>
+                <ul class="ul-circle">
+                    <li>Cinemachine</li>
+                    <li>TimeLine</li>
+                </ul>
+            </span>
+
+
+
+            <br><br>
+            <h2 id="title-3" onclick="bindFoldOrExpendEvent(this)">三、快速体验</h2>
+            <span>
+                <p>体验方式一：直接体验可执行程序，下载如下压缩包并解压运行，配合硬件设备进行体验。</p>
+                点击下载：<a href="https://101.201.140.142:9000/brainupresearch/just4downloader/-/raw/main/SDK_V0217_2.rar?inline=false">SDK_V0217_2.rar (42M)</a>
+
+                <br><br>
+                <p>体验方式二：在开发环境下，体验带源码的 SDK 应用，请按如下步骤操作</p>
+                <h4>软件需求：</h4>
+
+                <ol>
+                    <li>安装 UnityHub</li>
+                    <li>选择一个版本的 Unity 进行安装，推荐 2020.3 版本</li>
+                    <li>如需要修改代码则同时需要安装 Visual Studio </li>
+                </ol>
+
+                <br>
+                <h4 id="title-3.1">3.1) SDK 的下载和导入</h4>
+                <p>请从版本历史章节中下载并使用</p>
+
+                <br>
+                <div class="warning-background">
+                    <p>版本号说明如：sdk_0.1.2_3.unitypackage</p>
+                    <p>0是大版本号，主要代码结构或使用方式不变的情况下，大版本号不变</p>
+                    <p>1是小版本号，代码重构、修复bug、小的体验的修改更新该版本号</p>
+                    <p>2是小版本号，代码重构、修复bug、小的体验的修改更新该版本号</p>
+                    <p>3是SVN版本号，这个版本号记录下了SVN的提交记录中的版本号</p>
+                </div>
+
+                <br>
+                <p>下载后，在 Unity 中把文件拖放进 Project 面板，并选择所有文件导入即可。目前，本插件依赖 Unity Asset Store 中的一个蓝牙插件，开发时候需要导入这个插件。如果项目中已经有，无需导入和蓝牙插件有关的内容。</p>
+                <img src="img/0.png">
+                <p>导入后，文件夹结构如下图所示：</p>
+                <img src="img/1.png">
+
+
+                <h4 id="title-3.2">3.2) 配置打开 Basic 场景</h4>
+                <p>打开 Hub 场景，然后把这个场景加入到 BuildSettings 中的场景列表中去。</p>
+                <img src="img/2.png">
+
+                <h4 id="title-3.3">3.3) 佩戴设备</h4>
+                <h4 id="title-3.3.a">a) 设备开机</h4>
+                <p>短按设备上的电源键，直至开机指示灯亮起并闪烁。</p>
+                <img src="img/3.png" style="width: 363px">
+
+
+                <h4 id="title-3.3.b">b) 佩戴设备</h4>
+                <p>把设备套在头上，并调整头箍松紧，调整电极到合适位置，如下图所示。</p>
+                <img src="img/4.png" style="width: 500px">
+    <!--            <p class="text-margin-left">图 3.2.1</p>-->
+                <p>图 3.2.1：电极位置示意图，当正确佩戴后，从后脑勺往前看时候电极的位置。</p><br>
+
+
+                <img src="img/5.png" style="width: 363px">
+    <!--            <p class="text-margin-left">图 3.2.2</p>-->
+                <p>图 2.2.2：佩戴期效果图。</p><br>
+
+
+                <img src="img/6.png" style="width: 363px">
+    <!--            <p class="text-margin-left">图 3.2.3</p>-->
+                <p>图 3.2.3：设备贴近头皮一侧特写。</p>
+
+                <br>
+                <h4 id="title-3.4">3.4) 连接设备</h4>
+                <p>在 Unity 中，点击 Play 运行场景。场景运行后，可以看到一个设置页面，这里有完整的设置。点击扫描即可进行设备扫描。待扫描出结果后，选中要连接的设备，点击连接，待连接旁的方块儿变绿后，即连接成功。</p>
+                <img src="img/7.png" style="width: 800px">
+
+
+                <h4 id="title-3.5">3.5) 佩戴检测</h4>
+                <p>连接成功后点击下一步按钮，可以打开穿戴检测。待编号 1~7 的指示灯变绿后，即是穿戴良好。可以进行体验了。</p>
+                <img src="img/8.png" style="width: 800px">
+
+
+                <h4 id="title-3.6">3.6) 校准</h4>
+                <p>穿戴检测通过后即可开始设备校准。校准后，才能开始体验。校准得分越高，体验越好。进入校准页面后，点击开始，屏幕上的目标会开始闪烁，每次闪烁中间有 1~2 秒的间隔。约 30~40 秒之后，会出来校准结果</p>
+                <img src="img/9.png" style="width: 800px">
+
+
+                <h4 id="title-3.7">3.7) 体验项目</h4>
+                <p>校准结束后，可以点击下一步进入体验。在体验列表中点击体验列表中想要体验的项目，即可进行开始体验。</p>
+
+                <br>
+                <h4 id="title-3.8">3.8) 其它 demo</h4>
+                <p>NReal 设备上有 IoT 的 Demo 以及小怪兽游戏可以体验。</p>
+                <video controls width="800px">
+                    <source src="media/IoT.mp4">
+                </video>
+
+                <br><br>
+                <video controls width="800px">
+                    <source src="media/小怪兽.mp4">
+                </video>
+            </span>
+
+            <br><br>
+            <h2 id="title-4" onclick="bindFoldOrExpendEvent(this)">四、5分钟入门</h2>
+            <span>
+                <p>版本要求：适用于 sdk_1.1.1_preview_326 以下的版本</p>
+                <h4 id="title-4.1"> 4.1) SDK 下载和导入</h4>
+
+                <p>开发工具安装：</p>
+                <ul>
+                    <li>Unity2020 LTS</li>
+                    <li>VisualStudio 2019（或者更高版本）</li>
+                </ul>
+                <p> 安装 Unity 时，尽量使用 UntiyHub 软件安装，官方提供的有下载。UntiyHub 同时需要进行 Untiy 账号的注册，并激活个人版证书。Unity 和 VisualStudio 都安装好后，打开 Untiy 中菜单 Editor > Preferences 菜单，并在 External Tab 页中的 External Script Tool 项选择刚刚安装的 Visual Studio 版本。</p>
+                <img src="img/11.png" style="width: 300px"> <br><br>
+                <img src="img/12.png" style="width: 800px">
+
+                <h4 id="title-4.1.a">a) 新项目导入 SDK</h4>
+                <p>请从第三章节版本历史中下载并使用</p>
+
+                <br>
+                <h4 id="title-4.1.b">b) 佩戴设备</h4>
+                <p>按照上一个章节的指引，正确佩戴好设备，并且通过佩戴检测。</p>
+
+                <br>
+                <h4 id="title-4.2">4.2) SDK 使用方法</h4>
+                <p>使用 SDK 需要经过如下步骤:</p>
+                <img src="img/18.png" style="width: 700px">
+
+                <h4 id="title-4.2.1">4.2.1) 初始化 NeuroManager</h4>
+                <p>NeuroManager 以 prefab 的方式提供，上面存储的有默认的一些参数可供使用。可以直接在 NeuroManager 的检视面板中进行属性的修改。</p>
+                <img src="img/13.png" style="width: 600px">
+
+
+                <h4>System Config:</h4>
+                <ul class="ul-circle">
+                    <li>IsWorking: 可读写，设定全体目标是否进行频闪工作</li>
+                    <li>LinkType: 设置当前和BCI设备的连接方式</li>
+                    <li>DebugPanel: 显示Debug信息（uGUI），显示的信息为接受到的蓝牙数据包的数量统计</li>
+                    <li>IsFixWindow: 是否是固定窗算法</li>
+                    <li>ChannelInUse: 当前使用的EEG采集通道，0-7共八个通道</li>
+                </ul>
+
+                <h4>Fix Window Config：</h4>
+                <ul class="ul-circle">
+                    <li>fixWindowThreshold: 固定窗阈值</li>
+                    <li>fixWindowInterval: 是否为固定窗</li>
+                    <li>StaticWindowInterval: 固定窗间隔</li>
+                </ul>
+
+                <h4>CVEP Config:</h4>
+                <ul class="ul-circle">
+                    <li>CVEP_FrameRate: CVEP的闪烁基准频率</li>
+                    <li>Trainning trail: 校准试次</li>
+                    <li>Trainning block: 校准的block</li>
+                    <li>Algo trial: CVEP的目标识别试次</li>
+                </ul>
+
+                <h4>Stimulation Config:</h4>
+                <ul class="ul-circle">
+                    <li>minAlpha: 最小 Alpha 值</li>
+                    <li>maxAlpha: 最大 Alpha 值</li>
+                    <li>Reverse: 反转频闪</li>
+                </ul>
+
+                <br>
+                <h4 id="title-4.2.2">4.2.2) 发现/扫描设备</h4>
+                <p>进行设备扫描之前，首先选择通讯方式，比如是安卓平台则选择 Bluetooth Android; 然后进行下一步操作。</p>
+                <img src="img/14.png" style="width: 600px">
+
+                <br><br>
+                <div class="code-background">
+                _ = NeuroManager.Instance.FindDevice(10, (peripheral) => { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peripheralList.Add(peripheral); <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UpdateDeviceListUI(); <br>
+                });</div>
+
+                <p>调用 NeuroManager.FindDevice，可以查找周边的蓝牙 BCI 设备，并统计到回调函数的设备列表中去。这个函数是一个可等待的异步函数。</p>
+
+                <br>
+                <h4 id="title-4.2.3">4.2.3) 连接设备</h4>
+                <div class="code-background">
+                _ = NeuroManager.Instance.ConnectDevice(selectedPeripheral, (success, device) => { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgConnected.color = success ? Color.green : Color.gray;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (success) {<br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UIManager.Instance.Open&lt;UI_Msg&gt;(new UI_Msg.UIData() { Title = "", Content = "连接失败" });<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btConnect.interactable = true;<br>
+                    });
+                </div>
+
+                <br>
+                <h4 id="title-4.2.4">4.2.4) 断开连接</h4>
+                <p>如果程序运行结束，不想再使用这个设备，就可以调用断开连接方法使设备断开连接。</p>
+                <div class="code-background">
+                private void onClickDisconnect() { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_ = NeuroManager.Instance.DisconnectDevice(NeuroManager.Instance.ConnectedDevice);<br>
+                }
+                </div>
+
+                <br>
+                <h4 id="title-4.2.5">4.2.5) 穿戴检测</h4>
+                <p>穿戴检测可以直接体现设备在头上的佩戴情况。如果佩戴不好，则SDK对频闪目标的识别结果可能会不准确。NeuroManager.Instance.GetWearTestStat() 方法会获取到电极的佩戴情况，返回值是 int 数组，对应八个电极，0是接触良好，1是接触不良。</p>
+                <div class="code-background">
+                    NeuroManager.Instance.GetWearTestStat();
+                </div>
+
+                <br>
+                <h4 id="title-4.2.6">4.2.6) 配置校准场景中的频闪目标</h4>
+                <p>有两种方法可以创建频闪目标，第一种是通过菜单进行频闪目标自动创建，打开菜单 BrainTouch => Create => NeuroTag(uUGUI)，即可在层次面板选中的 GameObject 对象下面创建一个 NeuroTag 节点。</p>
+                <img src="img/15.png" style="width: 600px">
+
+                <p>另外一种方式就是直接在模型上面绑定 NeuroTag 脚本组件进行创建。并手动绑定 StimulationRenderers</p>
+                <img src="img/16.png">
+                <p>对应的组件绑定后，如果选取的 Shader 不是频闪专用的 Shader，那么会提示 Fix。Fix 后会绑定一个可以直接使用的材质球到这个频闪对象上面。之后就可以进行自定义的修改了。</p>
+                <br>
+                <p>注意这个 NeuroTag 的属性上的事件绑定。OnStartStimulation() 是开始闪烁事件，开始闪烁事件上绑定了 Tag 的边框对象，当开始闪烁时候，调用 GameObject.SetActive(false) 来隐藏高亮边框。在 OnTriggered() 事件中，也绑定了这个边框，当它触发时候，调用 GameObject.SetActive(true) 来显示边框，说明这个 NeuroTag 被识别触发了。</p>
+
+                <div class="warning-background">
+                    以上是配置单个 NeuroTag 的方法，在校准期间，有且仅有一个 NeuroTag(即频闪目标)。
+                </div>
+
+                <br>
+                <h4 id="title-4.2.7">4.2.7) 校准</h4>
+                <p>校准时候场景中需要按照步骤6 配置一个 NeuroTag 到场景中。然后检查 NeuroManager 中设置的设备连接方式、窗口类型以及 CVEP 编码相关参数，都符合要求后调用 NeuroManager.Instance.Calibration() 函数进行校准。结束后的回调函数参数以及函数返回值均为校准结果的得分。</p>
+                <div class="code-background">
+                _ = NeuroManager.Instance.Calibration((res) => { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (res <= 0) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 校准分小于或者等于0，说明校准失败。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }, (progress) => {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 此回调用来显示进度<br>
+                    });<br>
+                </div>
+
+                <br>
+                <h4 id="title-4.2.8">4.2.8) 配置应用场景中的频闪目标</h4>
+                <p>按照步骤5 在场景中配置我们的二维频闪目标或者三维频闪目标，并在目标的触发事件中执行一些我们自己的代码即可完成我们需要的结果。下图是在 UGUI 中进行 NeuroTag 的配置。</p>
+                <img src="img/17.png">
+                <p>在 NeuroTag 组件中，有两个可以绑定的事件，一个是 OnStartStimulation，另一个是 OnTriggered。OnStartStimulation 是在闪烁开始时候触发，OnTriggered 是在目标别识别后触发。在演示场景中，我们用着两个事件来操作高亮边框。在触发某个目标时候，边框显示，在开始闪烁时候，我们隐藏高亮边框。</p>
+
+                <br>
+                <h4 id="title-4.2.9">4.2.9) 运行</h4>
+                <p>Windows 下可以直接在 Editor 环境(即 Unity 中)下运行。点击 Unity 播放按钮，可以预览效果。</p>
+            </span>
+
+            <br>
+            <h2 id="title-5" onclick="bindFoldOrExpendEvent(this)">五、版本历史</h2>
+            <span>
+                <h4>sdk_1.5.0_preview_425 2023/2/20</h4>
+                点击下载: <a href="https://101.201.140.142:9000/brainupresearch/just4downloader/-/raw/main/sdk_1.5.0_preview_425.unitypackage?inline=false">sdk_1.5.0_preview_425.unitypackage (48M)</a>
+            </span>
+
+            <br><br>
+            <h2 id="title-6" onclick="bindFoldOrExpendEvent(this)">合作方式</h2>
+            <span>
+                <p>技术合作：luojunwen@naolubrain.com</p>
+                <p>商务合作：yexiaochen@naolubrain.com</p>
+            </span>
+            <br><br><br><br><br><br>
+        </div>
+
+    </div>
+</body>
+</html>
