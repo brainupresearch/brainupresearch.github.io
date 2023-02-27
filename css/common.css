@@ -1,0 +1,117 @@
+#leftSide {
+    height: 100%;
+    position: fixed;
+    width: 15%;
+
+    word-wrap:break-word;
+    word-break:break-all;
+    /*overflow: ;*/
+    /*margin-right: 50px;*/
+    font-size: 16px;
+    overflow: scroll;
+
+}
+
+
+.code-ident-1tab {
+    margin-left: 2em;
+}
+
+
+.code-ident-2tab {
+    margin-left: 4em;
+}
+
+
+#title-4-span p {
+    text-indent: 2em;
+}
+
+
+/*ul 与左屏幕间隙*/
+#leftSide ul {
+    padding-left: 10px;
+}
+
+
+
+/*li 与 li 之间的空隙*/
+#leftSide ul li{
+    padding-bottom: 5px;
+}
+
+
+/*鼠标划过 li 标签 指针变小手*/
+#leftSide li:hover,
+#title-1,
+#title-2,
+#title-3,
+#title-4,
+#title-5,
+#title-6 {
+    cursor: pointer;
+}
+
+/*a 标签取消下划线*/
+#leftSide ul a {
+    text-decoration-line: none;
+    color: black;
+}
+
+
+#rightSide {
+    /*margin: 0 auto;*/
+    width: 70%;
+    margin-left: 20%;
+}
+
+
+h2 {
+    /*margin-left: 20%;*/
+    /*text-align: center;*/
+}
+
+
+.ul-circle {
+    list-style-type: circle;    /* 圆圈 */
+}
+
+
+.ul-alpha {
+    list-style-type: lower-alpha;  /* 小写英文字母 */
+}
+
+
+.ul-none {
+    list-style-type: none;
+}
+
+
+img {
+    width: 800px;
+    max-width: 960px;
+}
+
+
+.text-align-center {
+    text-align: center;
+}
+
+
+.text-margin-left {
+    margin-left: 20%;
+}
+
+
+.code-background {
+    background: aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Tips: 字体橘色背景 */
+.warning-background {
+    background: antiquewhite;
+    border-radius: 5px;
+    padding: 10px;
+}

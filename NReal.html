@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>NReal</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<div id="container">
+
+    <!-- 左侧导航 -->
+    <div id="leftSide">
+        <ul class="ul-none">
+            <li><a href="#title-1">一、运行效果展示</a></li>
+
+            <li><a href="#title-2">二、游戏玩法</a></li>
+
+            <li>
+                <a href="#title-3">三、关卡设定</a>
+                <ul class="ul-none">
+                    <li><a href="#title-3.1">3.1) 关卡一</a></li>
+                    <li><a href="#title-3.2">3.2) 关卡二</a></li>
+                    <li><a href="#title-3.3">3.3) 关卡三</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#title-4">四、代码实现</a>
+                <ul class="ul-none">
+
+                    <li><a href="#title-4.1">4.1) 物理效果</a></li>
+
+                    <li>
+                        <a href="#title-4.2">4.2) 弹弓实现</a>
+                        <ul class="ul-none">
+                            <li><a href="#title-4.2.1">4.2.1) 模型</a></li>
+                            <li><a href="#title-4.2.2">4.2.2) 拉弓</a></li>
+                            <li><a href="#title-4.2.3">4.2.3) 发射</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#title-5">五、附录</a>
+                <ul class="ul-none">
+                    <li><a href="#title-5.1">低电量通知的弹窗屏蔽方法</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+
+
+    <!-- 右侧正文 -->
+    <div id="rightSide">
+        <h1>UnityDemo-2 NReal 意念打怪</h1><br>
+        <h2 id="title-1" onclick="bindFoldOrExpendEvent(this)">一、运行效果展示</h2>
+
+        <span>
+            <video controls width="600px">
+                <source src="media/NReal.mp4">
+            </video>
+            <p>
+                上述视频为在未佩戴设备的情况下录制，所以校准得分为 0; 攻击目标使用手柄按键实现的触发, 将大音量可以听到语音提示。
+            </p>
+        </span>
+
+
+        <br><br>
+        <h2 id="title-2" onclick="bindFoldOrExpendEvent(this)">二、游戏玩法</h2>
+        <span>
+            <p><strong>游戏目标：</strong>：每个关卡有一个或多个怪兽，全部消灭则通关</p>
+            <p><strong>消灭怪兽的方式：</strong>通过弹弓发射炮弹攻击砖块，让砖块倒塌，进而消灭邪恶的怪兽。怪兽碰撞到其它砖块或地面时速度大于 0.1 或砖块速度大于 0.5 则被判定为死亡。</p>
+            <p><strong>关卡切换：</strong>当前关卡内，怪兽全部被消灭后切换关卡</p>
+            <p><strong>砖块：</strong>砖块自带物理效果，有质量和重力，被撞后会倒塌，被撞击会弹开，并发出撞击声。不同材质的砖块具有不同的参数(质量、弹力、摩擦力、易碎程度等)，用于区分游戏难度。</p>
+            <p><strong>弹弓：</strong>用于发射炮弹</p>
+            <p><strong>炮弹：</strong>炮弹从弹弓发射, 用于攻击砖块, 炮弹的物理性质固定不变</p>
+        </span>
+
+
+
+        <br><br>
+        <h2 id="title-3" onclick="bindFoldOrExpendEvent(this)">三、关卡设计</h2>
+        <span>
+
+            <h4 id="title-3.1">3.1) 关卡一</h4>
+            <p>难度等级：低</p>
+            <p>频闪目标：2</p>
+            <img src="img/nreal/nr01.png" style="width: 300px" />
+
+
+            <br /><br />
+            <h4 id="title-3.2">3.2) 关卡二</h4>
+            <p>难度等级：中</p>
+            <p>频闪目标：3</p>
+            <img src="img/nreal/nr02.png" style="width: 500px" />
+
+
+            <br /><br />
+            <h4 id="title-3.3">3.3) 关卡三</h4>
+            <p>难度等级：中</p>
+            <p>频闪目标：3</p>
+            <img src="img/nreal/nr03.png" style="width: 500px" />
+
+        </span>
+
+        <br><br>
+        <h2 id="title-4" onclick="bindFoldOrExpendEvent(this)">四、代码实现</h2>
+        <span id="title-4-span">
+            <h4 id="title-4.1"> 4.1) 物理效果</h4>
+            <p>
+                物理效果使用 Unity 自带的物理材质来实现。积木、敌方小怪兽、炮弹分别使用不同的物理材质。炮弹的重量要调整的大一点。敌方小怪兽的摩擦力要调整的小一点，让它可以在积木倾斜时候可以滑下去，方便它被消灭。积木的摩擦力要大一些，为了保持积木在没有受攻击时候的稳定性。
+            </p>
+            <img src="img/nreal/nr04.png" style="width: 500px" />
+
+
+            <p>
+                按照默认的 BoxCollider，有些积木是无法稳定放置的，对于无法稳定放置的积木，需要手动调整其大小并使它顶部和底部尽量接触到其它积木，以使结构稳定。
+            </p>
+            <img src="img/nreal/nr05.png" style="width: 400px" />
+
+
+            <br><br>
+            <h4 id="title-4.2"> 4.2) 弹弓实现</h4>
+            <h4 id="title-4.2.1"> 4.2.1) 模型</h4>
+            <img src="img/nreal/nr06.png" />
+            <p>
+                弹弓模型使用网上找到的美术资源，它带有骨骼，拉弓是通过用 DoTween 做位移动画来实现。
+            </p>
+
+
+            <br>
+            <h4 id="title-4.2.2"> 4.2.2) 拉弓</h4>
+            <p>拉弓即是给弹仓做 DoTween 动画。拉弓过程分了两个阶段，第一个阶段，拉。第二个阶段，在拉到底的位置做小幅度的 PingPong 摆动。见脚本 Sling.cs。这个脚本绑定到场景中的弹弓模型上面，并给它相应属性赋值。SlingJoint 是弹仓骨骼关节，MaxForce 是拉弓力度，BirdObj 是绑定到弹弓上的小鸟造型的炮弹。CollisionForce 是小鸟撞击到积木时候额外增加的力。</p>
+            <img src="img/nreal/nr07.png" style="width: 600px" />
+            <p class="code-background" style="text-indent: 0">
+                // 拉弓<br>
+                public void Pull() {<br>
+                    <span class="code-ident-1tab">Debug.Log("Called pull");</span><br><br>
+                    <span class="code-ident-1tab">if (GameController.Instance.GetGameState() != GameController.GameState.LevelStarted</span><br>
+                       <span class="code-ident-1tab"> && GameController.Instance.GetGameState() != GameController.GameState.Lobby) { </span><br>
+                        <span class="code-ident-2tab">return;</span><br>
+                    <span class="code-ident-1tab">}</span><br><br>
+                    <span class="code-ident-1tab">// 旧的动画停止掉</span><br>
+                    <span class="code-ident-1tab">pullFull?.Kill();</span><br>
+                    <span class="code-ident-1tab">randomMove?.Kill();</span><br><br>
+                    <span class="code-ident-1tab">// 拉弓动作</span><br>
+                    <span class="code-ident-1tab">pullFull = SlingJoint.DOLocalMoveZ(MaxForce, 1f);</span><br>
+                    <span class="code-ident-1tab">pullFull.onComplete = () => {</span><br>
+                        <span class="code-ident-2tab">// 在目标位置 pingpong</span><br>
+                        <span class="code-ident-2tab">randomMove = SlingJoint.DOLocalMoveZ(-0.13f, 2f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);</span><br>
+                    <span class="code-ident-1tab">};</span><br><br>
+                    <span class="code-ident-1tab">// 播放拉弓音效</span><br>
+                    <span class="code-ident-1tab">AudioHelper.Instance.PlaySFX(SlingJoint.gameObject, AudioHelper.Clips.pull);</span><br><br>
+                    <span class="code-ident-1tab">// 开始频闪</span><br>
+                    <span class="code-ident-1tab">Invoke("EnableBlink", 2f);</span><br>
+                }
+            </p>
+
+            <br>
+            <h4 id="title-4.2.3"> 4.2.3) 发射</h4>
+            <p>
+                脚本中发射炮弹就是把小鸟用弹弓发射出去。调用  public void Shoot(Transform target)函数即可。发射的过程也分了多个阶段。第一阶段，弹仓从满弓位置到中间平衡点；第二阶段，弹仓再往前弹一点儿；第三阶段，弹仓回弹到初始位置。在弹仓到达中间平衡点时候，炮弹速度达到最大值，此时炮弹以抛物线朝着目标发射出去。
+            </p>
+
+        </span>
+
+        <br>
+        <h2 id="title-5" onclick="bindFoldOrExpendEvent(this)">五、附录</h2>
+        <span>
+            <h3 id="title-5.1"> 低电量通知的弹窗屏蔽方法</h3>
+            NReal 上有个电量低于 30% 就强行退出的问题，实际情况是电量低于百分之三十我们仍需要正常使用设备。解决方法就是找到 NRNotificationListener 这个 prefab，然后把它的电量通知勾选取消掉即可解决。<br>
+            <img src="img/nreal/nr08.png" style="width: 500px" />
+        </span>
+
+        <br><br><br><br><br><br>
+    </div>
+
+</div>
+</body>
+</html>
