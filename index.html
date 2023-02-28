@@ -295,8 +295,8 @@
                 <br><br>
                 <div class="code-background">
                 _ = NeuroManager.Instance.FindDevice(10, (peripheral) => { <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peripheralList.Add(peripheral); <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UpdateDeviceListUI(); <br>
+                <span class="code-ident-1tab">peripheralList.Add(peripheral);</span><br>
+                <span class="code-ident-1tab">UpdateDeviceListUI();</span><br>
                 });</div>
 
                 <p>调用 NeuroManager.FindDevice，可以查找周边的蓝牙 BCI 设备，并统计到回调函数的设备列表中去。这个函数是一个可等待的异步函数。</p>
@@ -305,13 +305,13 @@
                 <h4 id="title-4.2.3">4.2.3) 连接设备</h4>
                 <div class="code-background">
                 _ = NeuroManager.Instance.ConnectDevice(selectedPeripheral, (success, device) => { <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgConnected.color = success ? Color.green : Color.gray;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (success) {<br>
+                    <span class="code-ident-1tab">imgConnected.color = success ? Color.green : Color.gray;</span><br>
+                    <span class="code-ident-1tab">if (success) {</span><br>
                     <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UIManager.Instance.Open&lt;UI_Msg&gt;(new UI_Msg.UIData() { Title = "", Content = "连接失败" });<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btConnect.interactable = true;<br>
+                    <span class="code-ident-1tab">} else {</span><br>
+                    <span class="code-ident-2tab">UIManager.Instance.Open&lt;UI_Msg&gt;(new UI_Msg.UIData() { Title = "", Content = "连接失败" });</span><br>
+                    <span class="code-ident-1tab">}</span><br>
+                    <span class="code-ident-1tab">btConnect.interactable = true;</span><br>
                     });
                 </div>
 
@@ -320,7 +320,7 @@
                 <p>如果程序运行结束，不想再使用这个设备，就可以调用断开连接方法使设备断开连接。</p>
                 <div class="code-background">
                 private void onClickDisconnect() { <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_ = NeuroManager.Instance.DisconnectDevice(NeuroManager.Instance.ConnectedDevice);<br>
+                <span class="code-ident-1tab">_ = NeuroManager.Instance.DisconnectDevice(NeuroManager.Instance.ConnectedDevice);</span><br>
                 }
                 </div>
 
@@ -351,11 +351,11 @@
                 <p>校准时候场景中需要按照步骤6 配置一个 NeuroTag 到场景中。然后检查 NeuroManager 中设置的设备连接方式、窗口类型以及 CVEP 编码相关参数，都符合要求后调用 NeuroManager.Instance.Calibration() 函数进行校准。结束后的回调函数参数以及函数返回值均为校准结果的得分。</p>
                 <div class="code-background">
                 _ = NeuroManager.Instance.Calibration((res) => { <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (res <= 0) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 校准分小于或者等于0，说明校准失败。<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    <span class="code-ident-1tab">if (res <= 0) {</span><br>
+                    <span class="code-ident-2tab">// 校准分小于或者等于0，说明校准失败。</span><br>
+                    <span class="code-ident-1tab">}</span><br>
                     }, (progress) => {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 此回调用来显示进度<br>
+                    <span class="code-ident-1tab">// 此回调用来显示进度</span><br>
                     });<br>
                 </div>
 
