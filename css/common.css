@@ -2,7 +2,7 @@
     height: 100%;
     position: fixed;
     width: 15%;
-
+    /*min-width: 380px;*/
     word-wrap:break-word;
     word-break:break-all;
     /*overflow: ;*/
@@ -10,6 +10,11 @@
     font-size: 16px;
     overflow: scroll;
 
+}
+
+
+a {
+    text-decoration: none;
 }
 
 
@@ -22,8 +27,22 @@
     margin-left: 4em;
 }
 
+.code-ident-3tab {
+    margin-left: 6em;
+}
+
 
 #title-4-span p {
+    text-indent: 2em;
+}
+
+
+#title-4-span .p-none-text-indent {
+    text-indent: 0;
+}
+
+
+.span-p-text-ident {
     text-indent: 2em;
 }
 
