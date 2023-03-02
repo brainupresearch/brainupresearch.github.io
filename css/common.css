@@ -5,11 +5,37 @@
     /*min-width: 380px;*/
     word-wrap:break-word;
     word-break:break-all;
-    /*overflow: ;*/
+    overflow: auto;
     /*margin-right: 50px;*/
     font-size: 16px;
-    overflow: scroll;
+}
 
+
+/* 引入字体图标 */
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?pycuq2');
+    src:  url('../fonts/icomoon.eot?pycuq2#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?pycuq2') format('truetype'),
+    url('../fonts/icomoon.woff?pycuq2') format('woff'),
+    url('../fonts/icomoon.svg?pycuq2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+
+/* 字体图标在 span 上使用 */
+.icon-span {
+    font-family: 'icomoon';
+    visibility: hidden;
+}
+
+
+/* 鼠标划过 显示|隐藏 可展开图标 */
+#rightSide .arrow-hover:hover span {
+    color: blue;
+    visibility: visible;
 }
 
 
@@ -49,6 +75,7 @@ a {
 
 /*ul 与左屏幕间隙*/
 #leftSide ul {
+    /*float: right;*/
     padding-left: 10px;
 }
 
