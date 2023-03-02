@@ -28,6 +28,12 @@
 /* 字体图标在 span 上使用 */
 .icon-span {
     font-family: 'icomoon';
+    /*visibility: hidden;*/
+}
+
+
+/* 折叠|展开 小箭头默认隐藏 */
+#rightSide .arrow-hover .icon-span {
     visibility: hidden;
 }
 
