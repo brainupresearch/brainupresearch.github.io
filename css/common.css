@@ -25,6 +25,11 @@
 }
 
 
+#container #rightSide h1 {
+    position: relative;
+}
+
+
 /* 字体图标在 span 上使用 */
 .icon-span {
     font-family: 'icomoon';
@@ -34,6 +39,9 @@
 
 /* 折叠|展开 小箭头默认隐藏 */
 #rightSide .arrow-hover .icon-span {
+    position: absolute;
+    top: 5px;
+    left: -40px;
     visibility: hidden;
 }
 
